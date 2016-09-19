@@ -937,6 +937,11 @@
 !                              (orig. 3/23/12)
 !  17 Aug 2015 - J. Fisher   - Add scaling of reducible HgII based on UV-B
 !                              (orig. 3/24/12)
+!  26 May 2016 - E. Lundgren - Replace input_opt TRACER_MW_KG with species
+!                              database field emMW_g (emitted species g/mol)
+!  30 Jun 2016 - R. Yantosca - Remove instances of STT.  Now get the advected
+!                              species ID from State_Chm%Map_Advect.
+!  19 Sep 2016 - R. Yantosca - Cast IF expressions to LOGICAL for Gfortran
 !******************************************************************************
 !
       ! References to F90 modules
@@ -1890,7 +1895,15 @@
                   Hg2aq(I,J,NN) = Hg2aq(I,J,NN) + RIVER_HG *
      &                            A_M2 * DTSRCE * FRAC_O
 
-                  IF ( ND03 .and. NN == ID_Hg_tot )
+!-----------------------------------------------------------------------------
+! Prior to 9/19/16:
+! We need to wrap the NN == ID_Hg_Tot in parentheses, which will cast it to
+! LOGICAL type.  We also need to add the condition ( ND03 > 0 ), which will
+! evaluate to LOGICAL.  Gfortran will choke unless both arguments to AND are 
+! of type LOGICAL. (bmy, 9/19/16)
+!                  IF ( ND03 .and. NN == ID_Hg_tot )
+!-----------------------------------------------------------------------------
+                  IF ( ( ND03 > 0 ) .and. ( NN == ID_Hg_tot ) )
      &                AD03_riv(I,J) = AD03_riv(I,J) + RIVER_HG *
      &                                A_M2 * DTSRCE * FRAC_O
                ENDIF

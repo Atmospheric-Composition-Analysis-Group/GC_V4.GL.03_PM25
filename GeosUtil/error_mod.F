@@ -198,7 +198,7 @@
 !------------------------------------------------------------------------------
 !BOC
 
-#if defined( LINUX_IFORT )
+#if defined( LINUX_IFORT ) || defined( LINUX_GFORTRAN )
       IT_IS_A_NAN = ISNAN( VALUE )    
 #elif defined( LINUX_PGI )
       IT_IS_A_NAN = IEEE_IS_NAN( VALUE )
@@ -259,7 +259,7 @@
 !------------------------------------------------------------------------------
 !BOC
 !
-#if defined( LINUX_IFORT )
+#if defined( LINUX_IFORT ) || defined( LINUX_GFORTRAN )
       IT_IS_A_NAN = ISNAN( VALUE )      
 #elif defined( LINUX_PGI )
       IT_IS_A_NAN = IEEE_IS_NAN( VALUE )
@@ -322,7 +322,13 @@
 !------------------------------------------------------------------------------
 !BOC
 
-#if   defined( LINUX_IFORT )
+#if   defined( LINUX_GFORTRAN )
+
+      IT_IS_A_FINITE = ((.not.ISNAN(VALUE)) .and. 
+     &                  (VALUE.lt.HUGE(1.0e0)) .and.
+     &                  (VALUE.gt.(-1.0e0*HUGE(1.0e0))))
+
+#elif defined( LINUX_IFORT )
 
       ! Local variables (parameters copied from "fordef.for")
       INTEGER, PARAMETER :: SNAN=0, QNAN=1, POS_INF=2, NEG_INF=3
@@ -336,7 +342,7 @@
       IT_IS_A_FINITE = ( FPC /= POS_INF .and. FPC /= NEG_INF .and. 
      &                   FPC /= SNAN    .and. FPC /= QNAN          )
 
-#elif  defined( LINUX_PGI )
+#elif defined( LINUX_PGI )
 
       ! PGI compiler
       IT_IS_A_FINITE = IEEE_IS_FINITE( VALUE )
@@ -399,7 +405,13 @@
 !------------------------------------------------------------------------------
 !BOC
 
-#if   defined( LINUX_IFORT )
+#if   defined( LINUX_GFORTRAN )
+
+      IT_IS_A_FINITE = ((.not.ISNAN(VALUE)) .and. 
+     &                  (VALUE.lt.HUGE(1.d0)) .and.
+     &                  (VALUE.gt.(-1.0d0*HUGE(1.d0))))
+
+#elif defined( LINUX_IFORT )
 
       ! Local variables (parameters copied from "fordef.for")
       INTEGER, PARAMETER :: SNAN=0, QNAN=1, POS_INF=2, NEG_INF=3
