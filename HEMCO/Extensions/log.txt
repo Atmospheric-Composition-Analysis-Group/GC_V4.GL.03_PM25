@@ -1,0 +1,246 @@
+75a76,78
+> !  07 Jan 2016 - E. Lundgren - Change dry air gas constant and molec wt to 
+> !                              match main GC and update acc due to gravity and 
+> !                              universal gas constant to NIST 2014
+114c117
+<       REAL*8,  PARAMETER   :: GAS_CST_UNV      = 8.31441d0
+---
+>       REAL*8,  PARAMETER   :: GAS_CST_UNV      = 8.3144598d0
+116c119
+<       REAL*8,  PARAMETER   :: MMW_DRY_AIR      = 28.9644d-3
+---
+>       REAL*8,  PARAMETER   :: MMW_DRY_AIR      = 28.97d-3
+118,119c121,122
+<       REAL*8,  PARAMETER   :: GRV_SFC          = 9.80616d0
+<       REAL*8,  PARAMETER   :: GAS_CST_DRY_AIR  = 287.05d0
+---
+>       REAL*8,  PARAMETER   :: GRV_SFC          = 9.80665d0
+>       REAL*8,  PARAMETER   :: GAS_CST_DRY_AIR  = 287.0d0
+156,158d158
+<       ! (sphilip, 12/26/2016)
+<       ! Add AFCID (anthropogenic PM2.5 dust) emission to DST1 bin
+<       REAL(hp), ALLOCATABLE, TARGET :: MyDST1e(:,:,:)
+194,195d193
+<       USE HCO_Calc_Mod,      ONLY : HCO_CalcEmis 
+< !     ! (sphilip, 12/26/2016)
+267c265
+< !      REAL*8, PARAMETER      :: g0      = 9.8d0 
+---
+> !      REAL*8, PARAMETER      :: g0      = 9.80665d0 
+335,354d332
+<          ! (sphilip, 12/26/2016)
+<          HcoState%Options%SpcMin = HcoIDs(1)
+<          HcoState%Options%SpcMax = HcoIDs(1)
+<          HcoState%Options%CatMin =  1
+<          HcoState%Options%CatMax = -1
+<          HcoState%Options%ExtNr = ExtNr
+< 
+<          HcoState%Options%AutoFillDiagn = .FALSE.
+<          HcoState%Options%FillBuffer = .TRUE.
+<          HcoState%Buffer3D%Val => MyDST1e
+<     
+<          CALL HCO_CalcEmis( am_I_Root, HcoState, .FALSE., RC )
+<          IF ( RC /= HCO_SUCCESS ) RETURN
+< 
+<          ! Reset settings to standard
+<          HcoState%Buffer3D%Val          => NULL()
+<          HcoState%Options%FillBuffer    = .FALSE.
+<          HcoState%Options%ExtNr         = 0
+<          HcoState%Options%AutoFillDiagn = .TRUE.
+< 
+381,386d358
+<       ! (sphilip, 12/26/2016)
+<       ! debug: AFCID emissions added
+<       !print*, 'test = ', SUM(MyDST1e(:,:,:))
+<       !print*, 'test = ', MyDST1e(50,40,1)
+<       !print*, 'test = ', FLUX(50,40,1)
+< 
+482,488d453
+< 
+<                   ! (sphilip, 12/26/2016)
+< 	          ! Add AFCID to bin 1
+<                   IF ( N == 1 ) THEN   ! kg/m2/s
+<                      FLUX(I,J,N) = FLUX(I,J,N) + MyDST1e(I,J,1) 
+<                   ENDIF
+< 
+847,854d811
+<       ! (sphilip, 12/26/2016)
+<       ALLOCATE(MyDST1e(HcoState%NX,HcoState%NY,HcoState%NZ),STAT=AS)
+<       IF ( AS /= 0 ) THEN
+<          CALL HCO_ERROR ( 'MyDST1e', RC )
+<          RETURN
+<       ENDIF
+<       MyDST1e = 0.0_hp
+< 
+945,946d901
+<       ! (sphilip, 12/26/2016)
+<       IF ( ALLOCATED( MyDST1e         ) ) DEALLOCATE( MyDST1e         )
+5438,5478c5393
+< #if   defined( GEOS_FP ) && defined( GRID025x03125 )
+< 
+< #if defined(NESTED_CH)  
+< 
+<       !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<       !%%%       NOTE: NEED TO SCALE THIS FOR GEOS-FP nested CH!         %%%
+<       !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<       ! Copy the 05x0666 scale factors for now
+<       ! (skim, 5/20/12)
+<       FLX_MSS_FDG_FCT = 3.23d-4
+< #elif defined(NESTED_SE)  
+<       !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<       !%%%       NOTE: NEED TO SCALE THIS FOR GEOS-FP nested SE!         %%%
+<       !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<       ! Copy the 05x0666 scale factors for now
+<       ! (skim, 5/20/12)
+<       FLX_MSS_FDG_FCT = 3.23d-4
+< #elif defined(NESTED_NA)
+<       !----------------------------------------------------------------
+<       ! Based on results from GEOS-FP 0.25x0.3125 NA for 08/2012-08/2013
+<       ! compared to 2006 GEOS-5 0.5x0.666 NA
+<       !
+<       !   (GEOS-FP - GEOS-5)/GEOS-5 * 100 is 80.04% in each size bin.
+<       !
+<       ! We need to scale to the parameter FLX_MSS_FDG_FCT to make the
+<       ! dust emissions consistent. Consequently, to bring GEOS-FP nested
+<       ! NA dust emissions down to GEOS-5 nested NA levels, we need use
+<       ! a FLX_MSS_FDG_FCT of:
+<       !
+<       !             1 / (1 + 0.8004) = 0.5554
+<       !
+<       !             2.16d-4 * 0.5554 = 1.20d-4   ( 2.16d-4 is factor for
+<       !                                            GEOS-5 nested NA )
+<       !
+<       !    -- M. Sulprizio, 15 Jan 2014
+<       !----------------------------------------------------------------
+<       FLX_MSS_FDG_FCT = 1.20d-4
+< #endif
+< 
+<       ! Global mass flux tuning factor (a posteriori) [frc]
+< #elif defined( GEOS_5 ) && defined( GRID05x0666 )
+---
+> #if defined( GEOS_5 ) && defined( GRID05x0666 )
+5521a5437,5478
+> #elif   defined( GEOS_FP ) && defined( GRID025x03125 )
+> 
+> #if defined(NESTED_CH)
+> 
+>       !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+>       !%%%       NOTE: NEED TO SCALE THIS FOR GEOS-FP nested CH!         %%%
+>       !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+>       ! Copy the 05x0666 scale factors for now (skim, 5/20/12)
+>       FLX_MSS_FDG_FCT = 3.23d-4
+> 
+> #elif defined(NESTED_SE)
+> 
+>       !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+>       !%%%       NOTE: NEED TO SCALE THIS FOR GEOS-FP nested SE!         %%%
+>       !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+>       ! Copy the 05x0666 scale factors for now (skim, 5/20/12)
+>       FLX_MSS_FDG_FCT = 3.23d-4
+> 
+> #elif defined(NESTED_NA)
+> 
+>       !----------------------------------------------------------------
+>       ! Based on results from GEOS-FP 0.25x0.3125 NA for 08/2012-08/2013
+>       ! compared to 2006 GEOS-5 0.5x0.666 NA
+>       !
+>       !   (GEOS-FP - GEOS-5)/GEOS-5 * 100 is 80.04% in each size bin.
+>       !
+>       ! We need to scale to the parameter FLX_MSS_FDG_FCT to make the
+>       ! dust emissions consistent. Consequently, to bring GEOS-FP nested
+>       ! NA dust emissions down to GEOS-5 nested NA levels, we need use
+>       ! a FLX_MSS_FDG_FCT of:
+>       !
+>       !             1 / (1 + 0.8004) = 0.5554
+>       !
+>       !             2.16d-4 * 0.5554 = 1.20d-4   ( 2.16d-4 is factor for
+>       !                                            GEOS-5 nested NA )
+>       !
+>       !    -- M. Sulprizio, 15 Jan 2014
+>       !----------------------------------------------------------------
+>       FLX_MSS_FDG_FCT = 1.20d-4
+> 
+> #endif
+> 
+5557a5515,5567
+> #elif defined( MERRA2 ) && defined( GRID05x0625 )
+> 
+> #if defined(NESTED_CH)
+> 
+>       !----------------------------------------------------------------
+>       ! Based on results from MERRA2 0.5x0.625 CH for 2011 compared to
+>       ! GEOS-5 0.5x0.666 CH for 2011
+>       !
+>       !   (MERRA2 - GEOS-5)/GEOS-5 * 100 is 5.788% in each size bin.
+>       !
+>       ! We need to scale to the parameter FLX_MSS_FDG_FCT to make the
+>       ! dust emissions consistent. Consequently, to bring MERRA2 nested
+>       ! CH dust emissions down to GEOS-5 nested CH levels, we need use
+>       ! a FLX_MSS_FDG_FCT of:
+>       !
+>       !             1 / (1 + 0.05788) = 0.9453
+>       !
+>       !             3.23d-4 * 0.9453 = 3.05d-4   ( 3.23d-4 is factor for
+>       !                                            GEOS-5 nested CH )
+>       !
+>       ! NOTE: The MERRA2 0.5x0.625 CH grid extends further west (to 60E)
+>       ! than the GEOS-5 0.5x0.666 CH grid (to 70E). For this calculation,
+>       ! any dust emissions in the 60E-70E band in the MERRA2 CH output
+>       ! were ignored.
+>       !
+>       !    -- M. Sulprizio, 22 Feb 2016
+>       !----------------------------------------------------------------
+>       FLX_MSS_FDG_FCT = 3.05d-4
+> 
+> #elif defined(NESTED_NA)
+> 
+>       !----------------------------------------------------------------
+>       ! Based on results from MERRA2 0.5x0.625 NA for 2012 compared to
+>       ! GEOS-5 0.5x0.666 CH for 2012
+>       !
+>       !   (MERRA2 - GEOS-5)/GEOS-5 * 100 is 25.02% in each size bin.
+>       !
+>       ! We need to scale to the parameter FLX_MSS_FDG_FCT to make the
+>       ! dust emissions consistent. Consequently, to bring MERRA2 nested
+>       ! NA dust emissions down to GEOS-5 nested NA levels, we need use
+>       ! a FLX_MSS_FDG_FCT of:
+>       !
+>       !             1 / (1 + 0.2502) = 0.7999
+>       !
+>       !             2.16d-4 * 0.7999 = 1.73d-4   ( 2.16d-4 is factor for
+>       !                                            GEOS-5 nested NA )
+>       !
+>       !    -- M. Sulprizio, 22 Feb 2016
+>       !----------------------------------------------------------------
+>       FLX_MSS_FDG_FCT = 1.73d-4
+> 
+> #endif
+> 
+5564c5574,5576
+<       FLX_MSS_FDG_FCT = -999.0d0
+---
+>       ! Use GEOS-5 value for now (mps, 1/6/16)
+>       ! Updates based on 2012 simulation (mps, 7/10/16)
+>       FLX_MSS_FDG_FCT = 4.9d-4*0.971141
+5568,5572c5580,5594
+<       !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<       !%%% NOTE: RETUNING FOR MERRA2 4x5 IS NEEDED ONCE MET IS AVAILABLE %%%
+<       !%%%       Add placeholder value for now (bmy, 8/12/15)             %%%
+<       !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<       FLX_MSS_FDG_FCT = -999.0d0
+---
+>       !----------------------------------------------------------------
+>       ! Based on results from MERRA2 4x5 for 2012
+>       !
+>       !   (MERRA2 - GEOS-5)/GEOS-5 * 100 is -10.86% in each size bin.
+>       !
+>       ! We need to scale to the parameter FLX_MSS_FDG_FCT to make the
+>       ! dust emissions consistent.  Consequently, to bring 2012 MERRA2
+>       ! dust emissions up to 2012 GEOS-5 levels, we need to MULTIPLY the
+>       ! FLX_MSS_FDG_FCT used for GEOS-5 by:
+>       !
+>       !             1 / (1. - 0.1086) = 1 / 0.8913 = 1.1219
+>       !
+>       !    -- M. Sulprizio, 12 Feb 2016
+>       !----------------------------------------------------------------
+>       FLX_MSS_FDG_FCT = 7.0d-4 * 1.1219d0

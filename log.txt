@@ -1,0 +1,611 @@
+GeosApm/carbon_mod.F:!  (24) Now added NESTED_EU grid.  Updated formulation of SOG condensation 
+GeosApm/carbon_mod.F:!  (6 ) Now set parameters for NESTED_EU grid (amv, bmy, 12/19/09)
+GeosApm/carbon_mod.F:!                              by NESTED_NA
+GeosApm/carbon_mod.F:#if   defined( NESTED_NA )
+GeosApm/carbon_mod.F:#elif defined( NESTED_CH )
+GeosApm/carbon_mod.F:#elif defined( NESTED_EU )
+GeosApm/dao_mod.F:!  (21) AVGPOLE now uses NESTED_CH and NESTED_NA cpp switches (bmy, 12/1/04)
+GeosApm/dao_mod.F:!  (6 ) Now use cpp switches NESTED_CH and NESTED_NA to denote nested
+GeosApm/dao_mod.F:#if defined( NESTED_CH ) || defined( NESTED_NA   ) || defined( NESTED_EU     )
+GeosApm/dust_dead_mod.F:!  (5 ) Defined FLX_MSS_FDG_FCT for GEOS_4 2x2.5, GEOS_5 2x2.5, NESTED_NA and 
+GeosApm/dust_dead_mod.F:!        NESTED_EU.  Redefined FLX_MSS_FDG_FCT for NESTED_CH, based upon above
+GeosApm/dust_dead_mod.F:#if defined(NESTED_CH)  
+GeosApm/dust_dead_mod.F:#elif defined(NESTED_SE)  
+GeosApm/dust_dead_mod.F:#elif defined(NESTED_NA)
+GeosApm/dust_dead_mod.F:#if defined(NESTED_CH)  
+GeosApm/dust_dead_mod.F:#elif defined(NESTED_EU)
+GeosApm/dust_dead_mod.F:#elif defined(NESTED_NA)
+GeosApm/dust_mod.F:#elif defined( GRID1x1  ) && defined( NESTED_CH )
+GeosApm/seasalt_mod.F:#elif defined( GRID1x1  ) && defined( NESTED_CH )
+GeosApm/sulfate_mod.F:!%%% KLUDGE FOR NORTH AMERICAN NESTED GRID (bmy, 7/2/12)
+GeosApm/sulfate_mod.F:#if   defined( NESTED_NA )        
+GeosCore/wetscav_mod.F:         IF ( Input_Opt%ITS_A_NESTED_GRID ) THEN
+GeosCore/wetscav_mod.F:           IF ( J <=          Input_Opt%NESTED_J0W ) CYCLE
+GeosCore/wetscav_mod.F:           IF ( J >   JJPAR - Input_Opt%NESTED_J0E ) CYCLE
+GeosCore/wetscav_mod.F:           IF ( I <=          Input_Opt%NESTED_I0W ) CYCLE
+GeosCore/wetscav_mod.F:           IF ( I >   IIPAR - Input_Opt%NESTED_I0E ) CYCLE
+GeosCore/carbon_mod.F:!  (24) Now added NESTED_EU grid.  Updated formulation of SOG condensation 
+GeosCore/carbon_mod.F:!  (6 ) Now set parameters for NESTED_EU grid (amv, bmy, 12/19/09)
+GeosCore/carbon_mod.F:!                              by NESTED_NA
+GeosCore/carbon_mod.F:#if   defined( NESTED_NA )
+GeosCore/carbon_mod.F:#elif defined( NESTED_CH )
+GeosCore/carbon_mod.F:#elif defined( NESTED_EU )
+GeosCore/chemistry_mod.F:         IF ( Input_Opt%ITS_A_NESTED_GRID ) THEN
+GeosCore/chemistry_mod.F:           IF ( J <=         Input_Opt%NESTED_J0W ) CYCLE
+GeosCore/chemistry_mod.F:           IF ( J >  JJPAR - Input_Opt%NESTED_J0E ) CYCLE
+GeosCore/chemistry_mod.F:           IF ( I <=         Input_Opt%NESTED_I0W ) CYCLE
+GeosCore/chemistry_mod.F:           IF ( I >  IIPAR - Input_Opt%NESTED_I0E ) CYCLE
+GeosCore/convection_mod.F:         IF ( Input_Opt%ITS_A_NESTED_GRID ) THEN
+GeosCore/convection_mod.F:            IF ( J <=         Input_Opt%NESTED_J0W  ) CYCLE
+GeosCore/convection_mod.F:            IF ( J >  JJPAR - Input_Opt%NESTED_J0E  ) CYCLE
+GeosCore/convection_mod.F:            IF ( I <=         Input_Opt%NESTED_I0W  ) CYCLE
+GeosCore/convection_mod.F:            IF ( I >  IIPAR - Input_Opt%NESTED_I0E  ) CYCLE
+GeosCore/dao_mod.F:!  (21) AVGPOLE now uses NESTED_CH and NESTED_NA cpp switches (bmy, 12/1/04)
+GeosCore/dao_mod.F:!  (6 ) Now use cpp switches NESTED_CH and NESTED_NA to denote nested
+GeosCore/dao_mod.F:#if defined( NESTED_CH ) || defined( NESTED_NA   ) || defined( NESTED_EU     )
+GeosCore/diag49_mod.F:      USE GRID_MOD,  ONLY : ITS_A_NESTED_GRID
+GeosCore/diag49_mod.F:      IF ( ITS_A_NESTED_GRID() ) THEN
+GeosCore/diag50_mod.F:      USE GRID_MOD,   ONLY : ITS_A_NESTED_GRID
+GeosCore/diag50_mod.F:      IF ( ITS_A_NESTED_GRID() ) THEN
+GeosCore/diag51b_mod.F:      USE GRID_MOD,   ONLY : ITS_A_NESTED_GRID
+GeosCore/diag51b_mod.F:      IF ( ITS_A_NESTED_GRID() ) THEN
+GeosCore/diag51_mod.F:      USE GRID_MOD,   ONLY : ITS_A_NESTED_GRID
+GeosCore/diag51_mod.F:      IF ( ITS_A_NESTED_GRID() ) THEN
+GeosCore/diag63_mod.F:      USE GRID_MOD,  ONLY : ITS_A_NESTED_GRID
+GeosCore/diag63_mod.F:      IF ( ITS_A_NESTED_GRID() ) THEN
+GeosCore/exchange_mod.F:      PUBLIC   :: EXCHANGE_NESTED_INIT
+GeosCore/exchange_mod.F:      PUBLIC   :: EXCHANGE_NESTED_PRE
+GeosCore/exchange_mod.F:      PUBLIC   :: EXCHANGE_NESTED_POST
+GeosCore/exchange_mod.F:      CHARACTER*80               :: NESTED_CH_NAME = ''
+GeosCore/exchange_mod.F:      CHARACTER*80               :: NESTED_NA_NAME = ''
+GeosCore/exchange_mod.F:      CHARACTER*80               :: NESTED_EU_NAME = ''
+GeosCore/exchange_mod.F:      SUBROUTINE EXCHANGE_NESTED_INIT()
+GeosCore/exchange_mod.F:      WRITE (*,*) "@@@@@@@@@@@@@@ EXCHANGE_NESTED_INIT"
+GeosCore/exchange_mod.F:      END SUBROUTINE EXCHANGE_NESTED_INIT
+GeosCore/exchange_mod.F:      SUBROUTINE EXCHANGE_NESTED_PRE()
+GeosCore/exchange_mod.F:      WRITE (*,*) "@@@@@@@@@@@@@@ EXCHANGE_NESTED_PRE"
+GeosCore/exchange_mod.F:      END SUBROUTINE EXCHANGE_NESTED_PRE
+GeosCore/exchange_mod.F:      SUBROUTINE EXCHANGE_NESTED_POST( am_I_Root, Input_Opt,
+GeosCore/exchange_mod.F:      WRITE (*,*) "@@@@@@@@@@@@@@ EXCHANGE_NESTED_POST"
+GeosCore/exchange_mod.F:     &                   'EXCHANGE_NESTED_POST in exchange_mod.F')
+GeosCore/exchange_mod.F:     &                   'EXCHANGE_NESTED_POST in exchange_mod.F')
+GeosCore/exchange_mod.F:      END SUBROUTINE EXCHANGE_NESTED_POST
+GeosCore/exchange_mod.F:      NESTED_CH_NAME = 'NESTED_CH'
+GeosCore/exchange_mod.F:      NESTED_NA_NAME = 'NESTED_NA'
+GeosCore/exchange_mod.F:      NESTED_EU_NAME = 'NESTED_EU'
+GeosCore/exchange_mod.F:     &            '/dump.cspec.', TRIM(NESTED_CH_NAME), '.dump'
+GeosCore/exchange_mod.F:     &            '/dump.tracer.', TRIM(NESTED_CH_NAME), '.dump'
+GeosCore/exchange_mod.F:     &            '/dump.cspec.', TRIM(NESTED_NA_NAME), '.dump'
+GeosCore/exchange_mod.F:     &            '/dump.tracer.', TRIM(NESTED_NA_NAME), '.dump'
+GeosCore/exchange_mod.F:     &            '/dump.cspec.', TRIM(NESTED_EU_NAME), '.dump'
+GeosCore/exchange_mod.F:     &            '/dump.tracer.', TRIM(NESTED_EU_NAME), '.dump'
+GeosCore/exchange_mod.F:#elif defined ( NESTED_CH )
+GeosCore/exchange_mod.F:      MY_NAME = 'NESTED_CH'
+GeosCore/exchange_mod.F:#elif defined ( NESTED_NA )
+GeosCore/exchange_mod.F:      MY_NAME = 'NESTED_NA'
+GeosCore/exchange_mod.F:#elif defined ( NESTED_EU )
+GeosCore/exchange_mod.F:      MY_NAME = 'NESTED_EU'
+GeosCore/exchange_mod.F:#if   defined(NESTED_CH) || defined(NESTED_NA) || defined(NESTED_EU)
+GeosCore/geosfp_read_mod.F90:!  14 Jan 2014 - R. Yantosca - Now add NESTED_SE option
+GeosCore/geosfp_read_mod.F90:#elif defined( GRID025x03125 ) && defined( NESTED_CH )
+GeosCore/geosfp_read_mod.F90:#elif defined( GRID025x03125 ) && defined( NESTED_EU )
+GeosCore/geosfp_read_mod.F90:#elif defined( GRID025x03125 ) && defined( NESTED_NA )
+GeosCore/geosfp_read_mod.F90:#elif defined( GRID025x03125 ) && defined( NESTED_SE )
+GeosCore/input_mod.F:      PRIVATE :: READ_NESTED_GRID_MENU
+GeosCore/input_mod.F:!  15 Apr 2015 - R. Yantosca - Also define Input_Opt%ITS_A_NESTED_GRID here
+GeosCore/input_mod.F:         !      place them after the diagnostic menu): NESTED GRID
+GeosCore/input_mod.F:         ELSE IF ( INDEX( LINE, 'NESTED GRID MENU' ) > 0 ) THEN 
+GeosCore/input_mod.F:            CALL READ_NESTED_GRID_MENU( am_I_Root, Input_Opt, RC )
+GeosCore/input_mod.F:#elif defined( GRID05x0625 ) && defined( NESTED_CH )
+GeosCore/input_mod.F:#elif defined( GRID05x0625 ) && defined( NESTED_EU )
+GeosCore/input_mod.F:#elif defined( GRID05x0625 ) && defined( NESTED_NA )
+GeosCore/input_mod.F:#elif defined( GRID05x0625 ) && defined( NESTED_SE )
+GeosCore/input_mod.F:#elif defined( GRID05x0666 ) && defined( NESTED_CH )
+GeosCore/input_mod.F:#elif defined( GRID05x0666 ) && defined( NESTED_EU )
+GeosCore/input_mod.F:#elif defined( GRID05x0666 ) && defined( NESTED_NA )
+GeosCore/input_mod.F:#elif defined( GRID05x0666 ) && defined( NESTED_SE )
+GeosCore/input_mod.F:#elif defined( GRID025x03125 ) && defined( NESTED_CH ) 
+GeosCore/input_mod.F:#elif defined( GRID025x03125 ) && defined( NESTED_EU ) 
+GeosCore/input_mod.F:#elif defined( GRID025x03125 ) && defined( NESTED_NA ) 
+GeosCore/input_mod.F:#elif defined( GRID025x03125 ) && defined( NESTED_SE ) 
+GeosCore/input_mod.F:      READ( SUBSTRS(1:N), *     ) Input_Opt%NESTED_I0, 
+GeosCore/input_mod.F:     &                            Input_Opt%NESTED_J0
+GeosCore/input_mod.F:#if defined( NESTED_CH ) || defined( NESTED_EU ) || defined( NESTED_NA ) || defined( NESTED_SE) || defined( SEAC4RS )
+GeosCore/input_mod.F:      Input_Opt%ITS_A_NESTED_GRID = .TRUE.
+GeosCore/input_mod.F:     &                    Input_Opt%ITS_A_NESTED_GRID
+GeosCore/input_mod.F:     &                    Input_Opt%NESTED_I0, 
+GeosCore/input_mod.F:     &                    Input_Opt%NESTED_J0
+GeosCore/input_mod.F:      CALL SET_XOFFSET( Input_Opt%NESTED_I0 )
+GeosCore/input_mod.F:      CALL SET_YOFFSET( Input_OPt%NESTED_J0 )
+GeosCore/input_mod.F:! !DESCRIPTION: Subroutine READ\_NESTED\_GRID\_MENU reads the NESTED GRID MENU 
+GeosCore/input_mod.F:      SUBROUTINE READ_NESTED_GRID_MENU( am_I_Root, Input_Opt, RC )
+GeosCore/input_mod.F:      ! READ_NESTED_GRID_MENU begins here!
+GeosCore/input_mod.F:      Input_Opt%NESTED_TS  = TS
+GeosCore/input_mod.F:      Input_Opt%NESTED_I1  = I1
+GeosCore/input_mod.F:      Input_Opt%NESTED_J1  = J1
+GeosCore/input_mod.F:      Input_Opt%NESTED_I2  = I2
+GeosCore/input_mod.F:      Input_Opt%NESTED_J2  = J2
+GeosCore/input_mod.F:      Input_Opt%NESTED_I0W = I0W
+GeosCore/input_mod.F:      Input_Opt%NESTED_J0W = J0W
+GeosCore/input_mod.F:      Input_Opt%NESTED_I0E = I0E
+GeosCore/input_mod.F:      Input_Opt%NESTED_J0E = J0E
+GeosCore/input_mod.F:         WRITE( 6, '(/,a)' ) 'NESTED GRID MENU'
+GeosCore/input_mod.F:      END SUBROUTINE READ_NESTED_GRID_MENU
+GeosCore/input_mod.F:      ! READ_NESTED_GRID_MENU begins here!
+GeosCore/input_mod.F:      USE GRID_MOD,           ONLY : ITS_A_NESTED_GRID 
+GeosCore/input_mod.F:      IF ( ITS_A_NESTED_GRID() ) THEN
+GeosCore/input_mod.F:#if   defined( NESTED_NA)
+GeosCore/input_mod.F:#elif defined( NESTED_EU)
+GeosCore/input_mod.F:#elif defined( NESTED_CH)
+GeosCore/main.F:#elif defined( NESTED_CH ) || defined( NESTED_NA ) || defined( NESTED_EU ) || defined( NESTED_SE )
+GeosCore/main.F:      CALL EXCHANGE_NESTED_INIT()
+GeosCore/main.F:# elif defined( NESTED_CH ) || defined( NESTED_NA ) || defined( NESTED_EU ) || defined( NESTED_SE )
+GeosCore/main.F:               CALL EXCHANGE_NESTED_POST
+GeosCore/main.F:         CALL CHECK_STT_NESTED( State_Chm, Input_Opt,
+GeosCore/main.F:            CALL CHECK_STT_NESTED( State_Chm, Input_Opt,
+GeosCore/mercury_mod.F:#elif defined( GRID05x0625 ) && defined( NESTED_NA )
+GeosCore/mercury_mod.F:#elif defined( GRID05x0666 ) && defined( NESTED_NA )
+GeosCore/merra2_read_mod.F90:#elif defined( GRID05x0625 ) && defined( NESTED_CH )
+GeosCore/merra2_read_mod.F90:#elif defined( GRID05x0625 ) && defined( NESTED_EU )
+GeosCore/merra2_read_mod.F90:#elif defined( GRID05x0625 ) && defined( NESTED_NA )
+GeosCore/merra2_read_mod.F90:#elif defined( GRID05x0625 ) && defined( NESTED_SE )
+GeosCore/ocean_mercury_mod.F:!#if defined( GRID05x0666 ) && defined( NESTED_NA )
+GeosCore/ocean_mercury_mod.F:!#if defined( GRID05x0666 ) && defined( NESTED_NA )
+GeosCore/olson_landmap_mod.F90:    isGlobal = ( .not. ITS_A_NESTED_GRID() )
+GeosCore/seasalt_mod.F:#elif defined( GRID1x1  ) && defined( NESTED_CH )
+GeosCore/strat_chem_mod.F90:#if defined( NESTED_NA ) || defined( NESTED_CH ) || defined( NESTED_EU )
+GeosCore/strat_chem_mod.F90:#if   defined( NESTED_CH )
+GeosCore/strat_chem_mod.F90:#elif   defined( NESTED_NA )
+GeosCore/strat_chem_mod.F90:#elif   defined( NESTED_EU )
+GeosCore/strat_chem_mod.F90:#if   defined( NESTED_CH )
+GeosCore/strat_chem_mod.F90:#elif   defined( NESTED_NA )
+GeosCore/strat_chem_mod.F90:#elif   defined( NESTED_EU )
+GeosCore/strat_chem_mod.F90:#if defined( NESTED_CH )
+GeosCore/strat_chem_mod.F90:#elif defined( NESTED_NA )
+GeosCore/strat_chem_mod.F90:#elif defined( NESTED_EU )
+GeosCore/strat_chem_mod.F90:#if defined( NESTED_CH ) || defined( NESTED_NA ) || defined(NESTED_EU)
+GeosCore/tpcore_bc_mod.F:      ! I1_W : Lower left-hand  (LL) lon index of NESTED WINDOW 
+GeosCore/tpcore_bc_mod.F:      ! J1_W : Lower left-hand  (LL) lat index of NESTED WINDOW
+GeosCore/tpcore_bc_mod.F:      ! I2_W : Upper right-hand (UR) lon index of NESTED WINDOW
+GeosCore/tpcore_bc_mod.F:      ! J2_W : Upper right-hand (UR) lat index of NESTED WINDOW
+GeosCore/tpcore_bc_mod.F:#if   defined( NESTED_NA )
+GeosCore/tpcore_bc_mod.F:#elif defined( NESTED_EU )
+GeosCore/tpcore_bc_mod.F:#elif defined( NESTED_CH )
+GeosCore/tpcore_bc_mod.F:#if   defined( NESTED_CH ) || defined( NESTED_NA ) || defined( NESTED_EU ) || defined( NESTED_CU )
+GeosCore/tpcore_bc_mod.F:!  a 2 x 2.5 window which overlays the corresponding NESTED WINDOW REGION.  
+GeosCore/tpcore_bc_mod.F:!  a 2 x 2.5 window which overlays the corresponding NESTED WINDOW REGION.  
+GeosCore/tpcore_bc_mod.F:      USE GRID_MOD,           ONLY : ITS_A_NESTED_GRID
+GeosCore/tpcore_bc_mod.F:!        Now references ITS_A_NESTED_GRID from "grid_mod.f".  Also added 
+GeosCore/tpcore_bc_mod.F:      TS_BC      = Input_Opt%NESTED_TS
+GeosCore/tpcore_bc_mod.F:      !       ****** NESTED GRID TPCORE TRANSPORT REGION ******
+GeosCore/tpcore_bc_mod.F:      I0_W = Input_Opt%NESTED_I0W
+GeosCore/tpcore_bc_mod.F:      J0_W = Input_Opt%NESTED_J0W
+GeosCore/tpcore_bc_mod.F:      I0_E = Input_Opt%NESTED_I0E
+GeosCore/tpcore_bc_mod.F:      J0_E = Input_Opt%NESTED_J0E
+GeosCore/tpcore_bc_mod.F:      I1_BC = Input_Opt%NESTED_I1            ! Lon index, LL corner
+GeosCore/tpcore_bc_mod.F:      J1_BC = Input_Opt%NESTED_J1            ! Lat index, LL corner
+GeosCore/tpcore_bc_mod.F:      I2_BC = Input_Opt%NESTED_I2            ! Lon index, UR corner
+GeosCore/tpcore_bc_mod.F:      J2_BC = Input_Opt%NESTED_J2            ! Lat index, UR corner
+GeosCore/tpcore_bc_mod.F:      !        ****** BC REGION FOR N. AMERICA NESTED GRID ******
+GeosCore/tpcore_bc_mod.F:#if   defined( GRID4x5 ) || defined( NESTED_NA )
+GeosCore/tpcore_bc_mod.F:         !%%%%% 4x5 BC REGION FOR NORTH AMERICA NESTED GRID (GEOS_FP)
+GeosCore/tpcore_bc_mod.F:         !%%%%% 4x5 BC REGION FOR NORTH AMERICA NESTED GRID (MERRA2)
+GeosCore/tpcore_bc_mod.F:         !%%%%% 4x5 BC REGION FOR NORTH AMERICA NESTED GRID %%%%%
+GeosCore/tpcore_bc_mod.F:#if   defined( GRID2x25 ) || defined( NESTED_NA )
+GeosCore/tpcore_bc_mod.F:         !%%%%% 2x25 BC REGION FOR NORTH AMERICA NESTED GRID (GEOS_FP)
+GeosCore/tpcore_bc_mod.F:         !%%%%% 2x25 BC REGION FOR NORTH AMERICA NESTED GRID (MERRA2)
+GeosCore/tpcore_bc_mod.F:         !%%%%% 2x25 BC REGION FOR NORTH AMERICA NESTED GRID %%%%%
+GeosCore/tpcore_bc_mod.F:      !         ****** BC REGION FOR EUROPE NESTED GRID ******
+GeosCore/tpcore_bc_mod.F:#if   defined( GRID4x5 ) || defined( NESTED_EU )
+GeosCore/tpcore_bc_mod.F:         !%%%%% 4x5 BC REGION FOR EUROPE NESTED GRID %%%%%
+GeosCore/tpcore_bc_mod.F:#if   defined( GRID2x25 ) || defined( NESTED_EU )
+GeosCore/tpcore_bc_mod.F:         !%%%%% 2x25 BC REGION FOR EUROPE NESTED GRID %%%%%
+GeosCore/tpcore_bc_mod.F:      !      ****** BC REGION FOR CHINA/SE ASIA NESTED GRID ******
+GeosCore/tpcore_bc_mod.F:#if   defined( GRID4x5 ) || defined( NESTED_CH ) 
+GeosCore/tpcore_bc_mod.F:         !%%%%% NESTED CHINA GRID (GEOS-FP only)       %%%%%
+GeosCore/tpcore_bc_mod.F:         !%%%%% NESTED CHINA GRID (MERRA2 only)        %%%%%
+GeosCore/tpcore_bc_mod.F:         !%%%%% GEOS-5 CHINA NESTED GRID (GEOS-5 only) %%%%%
+GeosCore/tpcore_bc_mod.F:#if   defined( GRID2x25 ) || defined( NESTED_CH )
+GeosCore/tpcore_bc_mod.F:         !%%%%% NESTED CHINA GRID (GEOS-FP only)       %%%%%
+GeosCore/tpcore_bc_mod.F:         !%%%%% NESTED CHINA GRID (MERRA2 only)       %%%%%
+GeosCore/tpcore_bc_mod.F:         !%%%%% GEOS-5 CHINA NESTED GRID (GEOS_5 only)  %%%%%
+GeosCore/tpcore_bc_mod.F:      IF ( .not. ITS_A_NESTED_GRID() ) THEN
+GeosCore/tpcore_bc_mod.F:      ! Boundary condition array for CUSTOM NESTED REGION
+GeosCore/tpcore_bc_mod.F:      ! Boundary condition array for NESTED CHINA/SE ASIA REGION
+GeosCore/tpcore_bc_mod.F:      ! Boundary condition array for NESTED N. AMERICA REGION
+GeosCore/tpcore_bc_mod.F:      ! Boundary condition array for NESTED EUROPE REGION
+GeosCore/tpcore_bc_mod.F:#if   defined( NESTED_CH )
+GeosCore/tpcore_bc_mod.F:      !%%%%% Define boundaries for NESTED CHINA GRID %%%%%
+GeosCore/tpcore_bc_mod.F:#elif defined( NESTED_NA )
+GeosCore/tpcore_bc_mod.F:      !%%%%% Define boundaries for NESTED NORTH AMERICA GRID %%%%%
+GeosCore/tpcore_bc_mod.F:#elif defined( NESTED_EU )
+GeosCore/tpcore_bc_mod.F:      !%%%%% Define boundaries for NESTED EUROPE GRID %%%%%
+GeosCore/tracer_mod.F:      PUBLIC :: CHECK_STT_NESTED
+GeosCore/tracer_mod.F:! !DESCRIPTION: Subroutine CHECK\_STT\_NESTED checks the STT tracer array for
+GeosCore/tracer_mod.F:      SUBROUTINE CHECK_STT_NESTED( State_Chm, Input_Opt, LOCATION )
+GeosCore/tracer_mod.F:!  26 Oct 2015 - M. Sulprizio- Rename from CHECK_STT_05x0666 to CHECK_STT_NESTED
+GeosCore/tracer_mod.F:      ! CHECK_STT_NESTED begins here!
+GeosCore/tracer_mod.F:      END SUBROUTINE CHECK_STT_NESTED
+GeosCore/transport_mod.F:      USE GRID_MOD,           ONLY : ITS_A_NESTED_GRID
+GeosCore/transport_mod.F:      IF ( ITS_A_NESTED_GRID() ) THEN
+GeosCore/transport_mod.F:      IF ( LPRT ) CALL DEBUG_MSG( '### NESTED_ADV: a TPCORE' )
+GeosCore/ucx_mod.F:!#elif defined( GRID05x0666 )   && defined( NESTED_CH )
+GeosCore/ucx_mod.F:!#elif defined( GRID05x0666 )   && defined( NESTED_NA )
+GeosCore/ucx_mod.F:!#elif defined( GRID05x0666 )   && defined( NESTED_EU )
+GeosCore/ucx_mod.F:!#elif defined( GRID025x03125 ) && defined( NESTED_CH )
+GeosCore/ucx_mod.F:!#elif defined( GRID025x03125 ) && defined( NESTED_NA )
+GeosCore/ucx_mod.F:#elif defined( GRID05x0666 )   && defined( NESTED_CH )
+GeosCore/ucx_mod.F:#elif defined( GRID05x0666 )   && defined( NESTED_NA )
+GeosCore/ucx_mod.F:#elif defined( GRID05x0666 )   && defined( NESTED_EU )
+GeosCore/ucx_mod.F:#elif defined( GRID025x03125 ) && defined( NESTED_CH )
+GeosCore/ucx_mod.F:#elif defined( GRID025x03125 ) && defined( NESTED_NA )
+GeosCore/ucx_mod.F:#elif defined( GRID05x0666 )   && defined( NESTED_CH )
+GeosCore/ucx_mod.F:#elif defined( GRID05x0666 )   && defined( NESTED_NA )
+GeosCore/ucx_mod.F:#elif defined( GRID05x0666 )   && defined( NESTED_EU )
+GeosCore/ucx_mod.F:#elif defined( GRID025x03125 ) && defined( NESTED_CH )
+GeosCore/ucx_mod.F:#elif defined( GRID025x03125 ) && defined( NESTED_NA )
+GeosUtil/bpch2_mod.F:!        NESTED_CH or NESTED_NA cpp switches (bmy, 12/1/04)
+GeosUtil/bpch2_mod.F:!  18 Dec 2009 - Aaron van D - Add NESTED_EU flag
+GeosUtil/bpch2_mod.F:#if   defined(NESTED_CH) || defined(NESTED_NA)     || defined( NESTED_EU )
+GeosUtil/bpch2_mod.F:         ! *** NOTE: now use NESTED_CH/NESTED_NA/NESTED_EU cpp switches ***
+GeosUtil/grid_mod.F90:  LOGICAL                       :: IS_NESTED        ! Nested grid (T/F)?
+GeosUtil/grid_mod.F90:#if defined( NESTED_CH ) || defined( NESTED_EU ) || defined( NESTED_NA ) || defined( NESTED_SE )
+GeosUtil/grid_mod.F90:          !              %%%%% FOR NESTED GRIDS ONLY %%%%%
+GeosUtil/grid_mod.F90:       !                %%%%% FOR NESTED GRIDS ONLY %%%%%
+GeosUtil/grid_mod.F90:#if defined( NESTED_CH ) || defined( NESTED_EU ) || defined( NESTED_NA ) || defined( NESTED_SE )
+GeosUtil/grid_mod.F90:  FUNCTION ITS_A_NESTED_GRID() RESULT( IT_IS_NESTED )
+GeosUtil/grid_mod.F90:    LOGICAL :: IT_IS_NESTED   ! =T if it's a nested grid; =F otherwise
+GeosUtil/grid_mod.F90:    IT_IS_NESTED = IS_NESTED
+GeosUtil/grid_mod.F90:  END FUNCTION ITS_A_NESTED_GRID
+GeosUtil/grid_mod.F90:!  01 Mar 2012 - R. Yantosca - Now define IS_NESTED based on Cpp flags
+GeosUtil/grid_mod.F90:    ! IS_NESTED is now a local shadow variable (bmy, 4/1/15)
+GeosUtil/grid_mod.F90:    IS_NESTED = Input_Opt%ITS_A_NESTED_GRID
+GeosUtil/grid_mod.F90:    IF ( Input_Opt%ITS_A_NESTED_GRID ) THEN
+Headers/CMN_SIZE_mod.F:#if   defined( NESTED_CH )
+Headers/CMN_SIZE_mod.F:      INTEGER               :: IGLOB      = 121       ! NESTED CH 0.5x0.666
+Headers/CMN_SIZE_mod.F:#elif defined( NESTED_NA )
+Headers/CMN_SIZE_mod.F:      INTEGER               :: IGLOB      = 151       ! NESTED NA 0.5x0.666
+Headers/CMN_SIZE_mod.F:#elif defined( NESTED_EU )
+Headers/CMN_SIZE_mod.F:      INTEGER               :: IGLOB      = 121       ! NESTED EU 0.5x0.666
+Headers/CMN_SIZE_mod.F:#elif defined( GEOS_FP ) && defined( GRID025x03125 ) && defined( NESTED_CH )
+Headers/CMN_SIZE_mod.F:#elif defined( GEOS_FP ) && defined( GRID025x03125 ) && defined( NESTED_NA)
+Headers/CMN_SIZE_mod.F:#elif defined( GEOS_FP ) && defined( GRID025x03125 ) && defined( NESTED_EU)
+Headers/CMN_SIZE_mod.F:#elif defined( MERRA2 ) && defined( GRID05x0625 ) && defined( NESTED_CH )
+Headers/CMN_SIZE_mod.F:#elif defined( MERRA2 ) && defined( GRID05x0625 ) && defined( NESTED_NA)
+Headers/CMN_SIZE_mod.F:#elif defined( MERRA2 ) && defined( GRID05x0625 ) && defined( NESTED_EU)
+Headers/CMN_SIZE_mod.F:!  (19) Now use NESTED_CH and NESTED_NA cpp switches to define 
+Headers/CMN_SIZE_mod.F:!  18 Dec 2009 - Aaron van D - Added NESTED_EU grid parameters
+Headers/gigc_input_opt_mod.F90:     INTEGER                     :: NESTED_I0          
+Headers/gigc_input_opt_mod.F90:     INTEGER                     :: NESTED_J0          
+Headers/gigc_input_opt_mod.F90:     ! NESTED GRID MENU fields
+Headers/gigc_input_opt_mod.F90:     LOGICAL                     :: ITS_A_NESTED_GRID
+Headers/gigc_input_opt_mod.F90:     INTEGER                     :: NESTED_TS
+Headers/gigc_input_opt_mod.F90:     INTEGER                     :: NESTED_I1
+Headers/gigc_input_opt_mod.F90:     INTEGER                     :: NESTED_J1
+Headers/gigc_input_opt_mod.F90:     INTEGER                     :: NESTED_I2
+Headers/gigc_input_opt_mod.F90:     INTEGER                     :: NESTED_J2
+Headers/gigc_input_opt_mod.F90:     INTEGER                     :: NESTED_I0W
+Headers/gigc_input_opt_mod.F90:     INTEGER                     :: NESTED_J0W
+Headers/gigc_input_opt_mod.F90:     INTEGER                     :: NESTED_I0E
+Headers/gigc_input_opt_mod.F90:     INTEGER                     :: NESTED_J0E
+Headers/gigc_input_opt_mod.F90:    Input_Opt%NESTED_I0              = 0
+Headers/gigc_input_opt_mod.F90:    Input_Opt%NESTED_J0              = 0
+Headers/gigc_input_opt_mod.F90:    ! NESTED GRID MENU fields
+Headers/gigc_input_opt_mod.F90:    Input_Opt%ITS_A_NESTED_GRID      = .FALSE.
+Headers/gigc_input_opt_mod.F90:    Input_Opt%NESTED_TS              = 0
+Headers/gigc_input_opt_mod.F90:    Input_Opt%NESTED_I1              = 0
+Headers/gigc_input_opt_mod.F90:    Input_Opt%NESTED_J1              = 0
+Headers/gigc_input_opt_mod.F90:    Input_Opt%NESTED_I2              = 0
+Headers/gigc_input_opt_mod.F90:    Input_Opt%NESTED_J2              = 0
+Headers/gigc_input_opt_mod.F90:    Input_Opt%NESTED_I0W             = 0
+Headers/gigc_input_opt_mod.F90:    Input_Opt%NESTED_J0W             = 0 
+Headers/gigc_input_opt_mod.F90:    Input_Opt%NESTED_I0E             = 0
+Headers/gigc_input_opt_mod.F90:    Input_Opt%NESTED_J0E             = 0 
+HEMCO/Extensions/hcox_dustdead_mod.F:!  (5 ) Defined FLX_MSS_FDG_FCT for GEOS_4 2x2.5, GEOS_5 2x2.5, NESTED_NA and 
+HEMCO/Extensions/hcox_dustdead_mod.F:!        NESTED_EU.  Redefined FLX_MSS_FDG_FCT for NESTED_CH, based upon above
+HEMCO/Extensions/hcox_dustdead_mod.F:#if defined(NESTED_CH)  
+HEMCO/Extensions/hcox_dustdead_mod.F:#elif defined(NESTED_EU)
+HEMCO/Extensions/hcox_dustdead_mod.F:#elif defined(NESTED_NA)
+HEMCO/Extensions/hcox_dustdead_mod.F:#if defined(NESTED_CH)
+HEMCO/Extensions/hcox_dustdead_mod.F:#elif defined(NESTED_SE)
+HEMCO/Extensions/hcox_dustdead_mod.F:#elif defined(NESTED_NA)
+HEMCO/Extensions/hcox_dustdead_mod.F:#if defined(NESTED_CH)
+HEMCO/Extensions/hcox_dustdead_mod.F:#elif defined(NESTED_NA)
+HEMCO/Extensions/hcox_dustginoux_mod.F90:#elif defined( GRID1x1 ) && defined( NESTED_CH )
+HEMCO/Extensions/hcox_dustginoux_mod.F90:    !%%% NESTED GRIDS.  THIS WAS ORIGINALLY DONE FOR THE GEOS-3 1x1
+HEMCO/Extensions/hcox_dustginoux_mod.F90:    !%%% NESTED GRID.  LOOK INTO THIS LATER.  (bmy, 9/25/14)
+HEMCO/Extensions/hcox_tomas_dustdead_mod.F:!  (5 ) Defined FLX_MSS_FDG_FCT for GEOS_4 2x2.5, GEOS_5 2x2.5, NESTED_NA and 
+HEMCO/Extensions/hcox_tomas_dustdead_mod.F:!        NESTED_EU.  Redefined FLX_MSS_FDG_FCT for NESTED_CH, based upon above
+HEMCO/Extensions/hcox_tomas_dustdead_mod.F:#if defined(NESTED_CH)  
+HEMCO/Extensions/hcox_tomas_dustdead_mod.F:#elif defined(NESTED_SE)  
+HEMCO/Extensions/hcox_tomas_dustdead_mod.F:#elif defined(NESTED_NA)
+HEMCO/Extensions/hcox_tomas_dustdead_mod.F:#if defined(NESTED_CH)  
+HEMCO/Extensions/hcox_tomas_dustdead_mod.F:#elif defined(NESTED_EU)
+HEMCO/Extensions/hcox_tomas_dustdead_mod.F:#elif defined(NESTED_NA)
+HEMCO/Extensions/hcox_tomas_seasalt_mod.F90:#elif defined( GRID1x1  ) && defined( NESTED_CH )
+HEMCO/Extensions/hcox_lightnox_mod.F90:!                              GEOS-FP 025x03125 NESTED_CH grid
+HEMCO/Extensions/hcox_lightnox_mod.F90:#elif defined( GRID05x0666   ) && defined( NESTED_CH )
+HEMCO/Extensions/hcox_lightnox_mod.F90:#elif defined( GRID05x0666   ) && defined( NESTED_NA )
+HEMCO/Extensions/hcox_lightnox_mod.F90:#elif defined( GRID025x03125 ) && defined( NESTED_CH )
+HEMCO/Extensions/hcox_lightnox_mod.F90:#elif defined( GRID025x03125 ) && defined( NESTED_NA )
+HEMCO/Extensions/hcox_lightnox_mod.F90:#elif defined( GRID05x0625   ) && defined( NESTED_CH )
+HEMCO/Extensions/hcox_lightnox_mod.F90:#elif defined( GRID05x0625   ) && defined( NESTED_EU )
+HEMCO/Extensions/hcox_lightnox_mod.F90:#elif defined( GRID05x0625   ) && defined( NESTED_NA )
+HEMCO/Extensions/hcox_lightnox_mod.F90:#elif defined( GEOS_FP ) && defined( GRID025x03125 ) && defined( NESTED_CH )
+HEMCO/Extensions/hcox_lightnox_mod.F90:#elif defined( GEOS_FP ) && defined( GRID025x03125 ) && defined( NESTED_NA )
+HEMCO/Extensions/hcox_lightnox_mod.F90:#elif defined( MERRA2 ) && defined( GRID05x0625  ) && defined( NESTED_NA )
+HEMCO/Extensions/hcox_lightnox_mod.F90:#elif defined( MERRA2 ) && defined( GRID05x0625  ) && defined( NESTED_EU )
+HEMCO/Extensions/hcox_lightnox_mod.F90:#elif defined( MERRA2 ) && defined( GRID05x0625  ) && defined( NESTED_CH )
+HEMCO/Extensions/hcox_lightnox_mod.F90:#elif defined( GEOS_5 ) && defined( GRID05x0666 ) && defined( NESTED_NA)
+HEMCO/Extensions/hcox_lightnox_mod.F90:#elif defined( GEOS_5 ) && defined( GRID05x0666 ) && defined( NESTED_CH)
+obsolete/aircraft_nox_mod.F:!%%% KLUDGE FOR NORTH AMERICAN NESTED GRID (bmy, 7/2/12)
+obsolete/aircraft_nox_mod.F:#if   defined( NESTED_NA )        
+obsolete/define.h:!  NESTED_CH   : Enables code for CHINA  NESTED GRID
+obsolete/define.h:!  NESTED_NA   : Enables code for N. AM. NESTED GRID
+obsolete/define.h:!  NESTED_EUR  : Enables code for EUROPE NESTED GRID
+obsolete/define.h:!  01 Dec 2004 - R. Yantosca - Added NESTED_NA and NESTED_CH cpp switches.  
+obsolete/define.h:!  18 Dec 2009 - Aaron van D - Added NESTED_EU C-preprocessor switch
+obsolete/define.h:!#undef NESTED_NA
+obsolete/define.h:!#undef NESTED_C
+obsolete/define.h:!#undef NESTED_EU
+obsolete/define.h:!#define NESTED_CH        'NESTED_CH'
+obsolete/define.h:!#define NESTED_NA        'NESTED_NA'
+obsolete/define.h:!#define NESTED_EU        'NESTED_EU'
+obsolete/define.h:!#undef NESTED_NA
+obsolete/define.h:!#undef NESTED_CH
+obsolete/define.h:!#undef NESTED_EU
+obsolete/global_grid_mod.F90:!       WRITE( 6, '(a)' ) 'GLOBAL GRIDS FOR NESTED SIMULATIONS'
+obsolete/global_o3_mod.F:#if defined( GRID05x0666 ) && defined( NESTED_NA )
+obsolete/global_oh_mod.F:#if defined( NESTED_NA )
+obsolete/nei2008_anthro_mod.F90:      !USE SCALE_ANTHRO_MOD,  ONLY : GET_ANNUAL_SCALAR_05x0666_NESTED
+obsolete/old_emissions/acetone_mod.F:!  (15) Additional scale factors for NESTED_NA and NESTED_EU calculated and 
+obsolete/old_emissions/anthroems.F:      USE SCALE_ANTHRO_MOD,    ONLY : GET_ANNUAL_SCALAR_05x0666_NESTED
+obsolete/old_emissions/anthroems.F:!  (32) GET_ANNUAL_SCALAR_05x0666_NESTED_CH renamed to 
+obsolete/old_emissions/anthroems.F:!        GET_ANNUAL_SCALAR_05x0666_NESTED (amv, bmy, 12/18/09)
+obsolete/old_emissions/anthroems.F:      ! NESTED_CHINA are already cropped to the nested grid domain.  
+obsolete/old_emissions/anthroems.F:#if   defined( GRID05x0666 ) && defined( NESTED_CH )
+obsolete/old_emissions/anthroems.F:#elif defined( GRID025x03125 ) && defined( NESTED_NA )
+obsolete/old_emissions/anthroems.F:#elif defined( GRID025x03125 ) && defined( NESTED_EU )
+obsolete/old_emissions/anthroems.F:#if defined(GRID05x0666) && defined( NESTED_CH )
+obsolete/old_emissions/anthroems.F:#if defined(GRID05x0666) && defined( NESTED_CH )
+obsolete/old_emissions/anthroems.F:#if defined(GRID05x0666) && defined( NESTED_CH )
+obsolete/old_emissions/cac_anthro_mod.F:      USE SCALE_ANTHRO_MOD,   ONLY : GET_ANNUAL_SCALAR_05x0666_NESTED
+obsolete/old_emissions/cac_anthro_mod.F:               CALL GET_ANNUAL_SCALAR_05x0666_NESTED( ScNo, 2002,
+obsolete/old_emissions/cac_anthro_mod.F:               CALL GET_ANNUAL_SCALAR_05x0666_NESTED( ScNo,
+obsolete/old_emissions/dust_dead_mod.F:!  (5 ) Defined FLX_MSS_FDG_FCT for GEOS_4 2x2.5, GEOS_5 2x2.5, NESTED_NA and 
+obsolete/old_emissions/dust_dead_mod.F:!        NESTED_EU.  Redefined FLX_MSS_FDG_FCT for NESTED_CH, based upon above
+obsolete/old_emissions/dust_dead_mod.F:#if defined(NESTED_CH)  
+obsolete/old_emissions/dust_dead_mod.F:#elif defined(NESTED_SE)  
+obsolete/old_emissions/dust_dead_mod.F:#elif defined(NESTED_NA)
+obsolete/old_emissions/dust_dead_mod.F:#if defined(NESTED_CH)  
+obsolete/old_emissions/dust_dead_mod.F:#elif defined(NESTED_EU)
+obsolete/old_emissions/dust_dead_mod.F:#elif defined(NESTED_NA)
+obsolete/old_emissions/emep_mod.F:      USE SCALE_ANTHRO_MOD,   ONLY : GET_ANNUAL_SCALAR_05x0666_NESTED
+obsolete/old_emissions/emep_mod.F:         CALL GET_ANNUAL_SCALAR_05x0666_NESTED(73,1990,SCALEYEAR,Sc)
+obsolete/old_emissions/epa_nei_mod.F:#if   defined( NESTED_NA )
+obsolete/old_emissions/epa_nei_mod.F:#if   defined( NESTED_NA )
+obsolete/old_emissions/lightning_nox_mod.F:#if defined( GEOS_5 ) && defined( NESTED_EU ) 
+obsolete/old_emissions/lightning_nox_mod.F:#if   defined( GEOS_FP ) && defined( NESTED_CH )
+obsolete/old_emissions/lightning_nox_mod.F:#elif defined( GEOS_FP ) && defined( NESTED_NA )
+obsolete/old_emissions/lightning_nox_mod.F:#elif defined( GEOS_FP ) && defined( NESTED_EU ) 
+obsolete/old_emissions/lightning_nox_mod.F:#elif defined( GEOS_FP ) && defined( NESTED_SE ) 
+obsolete/old_emissions/lightning_nox_mod.F:#if   defined( GEOS_5 ) && defined( NESTED_CH ) 
+obsolete/old_emissions/lightning_nox_mod.F:#elif defined( GEOS_5 ) && defined( NESTED_NA ) 
+obsolete/old_emissions/lightning_nox_mod.F:#elif defined( GEOS_5 ) && defined( NESTED_EU ) 
+obsolete/old_emissions/lightning_nox_mod.F:#elif defined( GRID05x0666 ) && defined( NESTED_CH )
+obsolete/old_emissions/lightning_nox_mod.F:#elif defined( GRID05x0666 ) && defined( NESTED_NA )
+obsolete/old_emissions/lightning_nox_mod.F:#elif defined( GRID025x03125 ) && defined( NESTED_NA )
+obsolete/old_emissions/lightning_nox_mod.F:#elif defined( GEOS_FP ) && defined( GRID025x0325 ) && defined( NESTED_CH )
+obsolete/old_emissions/lightning_nox_mod.F:#elif defined( GEOS_FP ) && defined( GRID025x03125 ) && defined( NESTED_NA )
+obsolete/old_emissions/lightning_nox_mod.F:#elif defined( GEOS_5 ) && defined( GRID05x0666 ) && defined( NESTED_NA)
+obsolete/old_emissions/lightning_nox_mod.F:#elif defined( GEOS_5 ) && defined( GRID05x0666 ) && defined( NESTED_CH)
+obsolete/old_emissions/nei2005_anthro_mod.F:      USE SCALE_ANTHRO_MOD,   ONLY : GET_ANNUAL_SCALAR_05x0666_NESTED
+obsolete/old_emissions/nei2005_anthro_mod.F:            CALL GET_ANNUAL_SCALAR_05x0666_NESTED( ScNo,2005,
+obsolete/old_emissions/scale_anthro_mod.F:      PUBLIC  :: GET_ANNUAL_SCALAR_05x0666_NESTED
+obsolete/old_emissions/scale_anthro_mod.F:!  (1 ) Add GET_ANNUAL_SCALAR_05x0666_NESTED_CH for nested grid simulations 
+obsolete/old_emissions/scale_anthro_mod.F:!  18 Dec 2009 - Aaron van D - Updated routine GET_ANNUAL_SCALAR_05x0666_NESTED
+obsolete/old_emissions/scale_anthro_mod.F:! !DESCRIPTION:  Subroutine GET\_ANNUAL\_SCALAR\_05x0666\_NESTED
+obsolete/old_emissions/scale_anthro_mod.F:      SUBROUTINE GET_ANNUAL_SCALAR_05x0666_NESTED
+obsolete/old_emissions/scale_anthro_mod.F:!  18 Dec 2009 - Aaron van D - Renamed to GET_ANNUAL_SCALAR_05x0666_NESTED
+obsolete/old_emissions/scale_anthro_mod.F:!  18 Dec 2009 - Aaron van D - Rewrote GET_ANNUAL_SCALAR_05x0666_NESTED to 
+obsolete/old_emissions/scale_anthro_mod.F:      ! GET_ANNUAL_SCALAR_05x0666_NESTED begins here!
+obsolete/old_emissions/scale_anthro_mod.F:      END SUBROUTINE GET_ANNUAL_SCALAR_05x0666_NESTED
+obsolete/old_emissions/streets_anthro_mod.F:      USE SCALE_ANTHRO_MOD,   ONLY : GET_ANNUAL_SCALAR_05x0666_NESTED
+obsolete/old_emissions/streets_anthro_mod.F:            CALL GET_ANNUAL_SCALAR_05x0666_NESTED( 71,   2000,
+obsolete/old_emissions/streets_anthro_mod.F:            CALL GET_ANNUAL_SCALAR_05x0666_NESTED( 71,   2006,
+obsolete/old_emissions/streets_anthro_mod.F:            CALL GET_ANNUAL_SCALAR_05x0666_NESTED( 72,    2006,
+obsolete/old_emissions/streets_anthro_mod.F:            CALL GET_ANNUAL_SCALAR_05x0666_NESTED( 72,    2000,
+obsolete/old_emissions/streets_anthro_mod.F:            CALL GET_ANNUAL_SCALAR_05x0666_NESTED( 72,    2001,
+obsolete/old_emissions/streets_anthro_mod.F:            CALL GET_ANNUAL_SCALAR_05x0666_NESTED( 73,    2000,
+obsolete/old_emissions/streets_anthro_mod.F:            CALL GET_ANNUAL_SCALAR_05x0666_NESTED( 73,    2006,
+obsolete/regrid_1x1_mod.F:#elif defined( GRID1x1 ) && defined( NESTED_CH )
+obsolete/regrid_1x1_mod.F:#elif defined( GRID1x1 ) && defined( NESTED_NA )
+obsolete/regrid_1x1_mod.F:#elif defined( GRID05x0666 ) && defined( NESTED_CH )
+obsolete/regrid_1x1_mod.F:      CALL REGRID_05x0666_NESTED( I1x1,  J1x1,  L1x1, UNIT, 
+obsolete/regrid_1x1_mod.F:#elif defined( GRID05x0666 ) && defined( NESTED_NA )
+obsolete/regrid_1x1_mod.F:      CALL REGRID_05x0666_NESTED( I1x1,  J1x1,  L1x1, UNIT, 
+obsolete/regrid_1x1_mod.F:#elif defined( GRID05x0666 ) && defined( NESTED_EU )
+obsolete/regrid_1x1_mod.F:      CALL REGRID_05x0666_NESTED( I1x1,  J1x1,  L1x1, UNIT,
+obsolete/regrid_1x1_mod.F:#if   defined( GRID05x0666 ) && defined( NESTED_CH )
+obsolete/regrid_1x1_mod.F:#elif defined( GRID05x0666 ) && defined( NESTED_NA )
+obsolete/regrid_1x1_mod.F:#elif defined( GRID05x0666 ) && defined( NESTED_EU )
+obsolete/regrid_1x1_mod.F:#if defined( GRID05x0666 ) && defined( NESTED_CH )
+obsolete/regrid_1x1_mod.F:#elif defined( GRID05x0666 ) && defined( NESTED_NA )
+obsolete/regrid_1x1_mod.F:#elif defined( GRID05x0666 ) && defined( NESTED_EU )
+obsolete/regrid_1x1_mod.F:      SUBROUTINE REGRID_05x0666_NESTED( I1, J1, L1, UNIT, 
+obsolete/regrid_1x1_mod.F:!  Subroutine REGRID_05x0666_NESTED regrid 1x1 data to 0.5 x 0.667 data and
+obsolete/regrid_1x1_mod.F:#if defined( NESTED_CH ) 
+obsolete/regrid_1x1_mod.F:#elif defined ( NESTED_NA ) 
+obsolete/regrid_1x1_mod.F:#elif defined ( NESTED_EU )
+obsolete/regrid_1x1_mod.F:      REAL*8                       :: NESTED1x1(II_NEST,JJ_NEST)  !1x1 array for nested 
+obsolete/regrid_1x1_mod.F:      ! REGRID_05x0666_NESTED begins here!
+obsolete/regrid_1x1_mod.F:         write(*,*)'Terminate in REGRID_05x0666_NESTED: regrid_1x1mod.f'
+obsolete/regrid_1x1_mod.F:!$OMP+PRIVATE( I, J, L, X, Y, NESTED1x1 )
+obsolete/regrid_1x1_mod.F:         NESTED1x1(:,:) = IN1x1(I1_NEST:I2_NEST,J1_NEST:J2_NEST, L)
+obsolete/regrid_1x1_mod.F:               OUTNEST(X,Y,L) = NESTED1x1(I,J) * FAC1
+obsolete/regrid_1x1_mod.F:               OUTNEST(X+1,Y,L) = NESTED1x1(I,J)* FAC2 + 
+obsolete/regrid_1x1_mod.F:     &                            NESTED1x1(I+1,J)* FAC3
+obsolete/regrid_1x1_mod.F:               OUTNEST(X+2,Y,L) = NESTED1x1(I+1,J)* FAC3 + 
+obsolete/regrid_1x1_mod.F:     &                            NESTED1x1(I+2,J)* FAC2
+obsolete/regrid_1x1_mod.F:               OUTNEST(X,Y+1,L) = NESTED1x1(I,J)*FAC4 + 
+obsolete/regrid_1x1_mod.F:     &                            NESTED1x1(I,J+1)*FAC4
+obsolete/regrid_1x1_mod.F:               OUTNEST(X+1,Y+1,L) = NESTED1x1(I  ,J  )*FAC5 + 
+obsolete/regrid_1x1_mod.F:     &                              NESTED1x1(I+1,J  )*FAC6 + 
+obsolete/regrid_1x1_mod.F:     &                              NESTED1x1(I+1,J+1)*FAC6 + 
+obsolete/regrid_1x1_mod.F:     &                              NESTED1x1(I  ,J+1)*FAC5 
+obsolete/regrid_1x1_mod.F:               OUTNEST(X+2,Y+1,L) = NESTED1x1(I+1,J  )*FAC6 + 
+obsolete/regrid_1x1_mod.F:     &                              NESTED1x1(I+2,J  )*FAC5 + 
+obsolete/regrid_1x1_mod.F:     &                              NESTED1x1(I+2,J+1)*FAC5 + 
+obsolete/regrid_1x1_mod.F:     &                              NESTED1x1(I+1,J+1)*FAC6
+obsolete/regrid_1x1_mod.F:            OUTNEST(X,Y,L) = NESTED1x1(I,J)
+obsolete/regrid_1x1_mod.F:            OUTNEST(X,Y+1,L) = NESTED1x1(I,J)*0.5d0 + 
+obsolete/regrid_1x1_mod.F:     &                         NESTED1x1(I,J+1)*0.5d0
+obsolete/regrid_1x1_mod.F:               OUTNEST(X+1,Y,L) = NESTED1x1(I,J)*0.25d0 + 
+obsolete/regrid_1x1_mod.F:     &                            NESTED1x1(I+1,J)*0.75d0
+obsolete/regrid_1x1_mod.F:               OUTNEST(X+1,Y+1,L) = NESTED1x1(I  ,J  )*0.125d0 + 
+obsolete/regrid_1x1_mod.F:     &                              NESTED1x1(I+1,J  )*0.375d0 + 
+obsolete/regrid_1x1_mod.F:     &                              NESTED1x1(I+1,J+1)*0.375d0 + 
+obsolete/regrid_1x1_mod.F:     &                              NESTED1x1(I  ,J+1)*0.125d0 
+obsolete/regrid_1x1_mod.F:            OUTNEST(X,Y,L) = NESTED1x1(I,J)
+obsolete/regrid_1x1_mod.F:            OUTNEST(X+1,Y,L) = NESTED1x1(I,J)*0.25d0 + 
+obsolete/regrid_1x1_mod.F:     &                         NESTED1x1(I+1,J)*0.75d0
+obsolete/regrid_1x1_mod.F:            OUTNEST(X+2,Y,L) = NESTED1x1(I+1,J)*0.75d0 + 
+obsolete/regrid_1x1_mod.F:     &                         NESTED1x1(I+2,J)*0.25d0
+obsolete/regrid_1x1_mod.F:         OUTNEST(X,Y,L) = NESTED1x1(I,J)
+obsolete/regrid_1x1_mod.F:            OUTNEST(X+1,Y,L) = NESTED1x1(I,J)*0.25d0 + 
+obsolete/regrid_1x1_mod.F:     &                         NESTED1x1(I+1,J)*0.75d0
+obsolete/regrid_1x1_mod.F:      END SUBROUTINE REGRID_05x0666_NESTED
+obsolete/schem.F:!%%% KLUDGE FOR NESTED GRIDS (bmy, 7/3/12)
+obsolete/schem.F:!%%% KLUDGE FOR NESTED GRIDS (bmy, 7/3/12)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (bmy, 11/5/08)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATION FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATION FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATION FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATION FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATION FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATION FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/030
+obsolete/tpcore_window_mod.F:!%%% MODIFICATION FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATION FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATION FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATION FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATION FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATION FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATION FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID
+obsolete/tpcore_window_mod.F:!%%% MODIFICATION FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/11/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/11/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/tpcore_window_mod.F:!%%% MODIFICATIONS FOR NESTED GRID (yxw, bmy, 3/10/03)
+obsolete/upbdflx_mod.F:#if   defined( NESTED_CH ) || defined( NESTED_NA )
+obsolete/upbdflx_mod.F:#if   defined( NESTED_CH ) || defined( NESTED_NA )
+PKUCPL/PKUCPL.F90:           CALL SYSTEM("touch " // TRIM(lockdir) // "key.NESTED_CH.key")
+PKUCPL/PKUCPL.F90:           CALL SYSTEM("touch " // TRIM(lockdir) // "key.NESTED_NA.key")
+PKUCPL/PKUCPL.F90:           CALL SYSTEM("touch " // TRIM(lockdir) // "key.NESTED_EU.key")
+PKUCPL/PKUCPL.F90:      done(2) = trim(lockdir) // "done.NESTED_CH.done"
+PKUCPL/PKUCPL.F90:      done(3) = trim(lockdir) // "done.NESTED_NA.done"
+PKUCPL/PKUCPL.F90:      done(4) = trim(lockdir) // "done.NESTED_EU.done"
+PKUCPL/PKUCPL.F90:      endrun(2) = trim(lockdir) // "end.NESTED_CH.end"
+PKUCPL/PKUCPL.F90:      endrun(3) = trim(lockdir) // "end.NESTED_NA.end"
+PKUCPL/PKUCPL.F90:      endrun(4) = trim(lockdir) // "end.NESTED_EU.end"
+PKUCPL/PKUCPL.sh:				nested1="NESTED_CH"
+PKUCPL/PKUCPL.sh:				nested2="NESTED_CH"
+PKUCPL/PKUCPL.sh:				nested3="NESTED_CH"
+PKUCPL/PKUCPL.sh:				nested1="NESTED_NA"
+PKUCPL/PKUCPL.sh:				nested2="NESTED_NA"
+PKUCPL/PKUCPL.sh:				nested3="NESTED_NA"
+PKUCPL/PKUCPL.sh:				nested1="NESTED_EU"
+PKUCPL/PKUCPL.sh:				nested2="NESTED_EU"
+PKUCPL/PKUCPL.sh:				nested3="NESTED_EU"
+Makefile_header.mk:#  07 Nov 2013 - R. Yantosca - NEST=se to now sets CPP switch w/ -DNESTED_SE
+Makefile_header.mk:#  03 Aug 2015 - M. Sulprizio- NEST=cu to now sets CPP switch w/ -DNESTED_CU for
+Makefile_header.mk:    USER_DEFS        += -DNESTED_CH
+Makefile_header.mk:    USER_DEFS        += -DNESTED_EU
+Makefile_header.mk:    USER_DEFS        += -DNESTED_NA
+Makefile_header.mk:    USER_DEFS        += -DNESTED_SE
+Makefile_header.mk:    USER_DEFS        += -DNESTED_CU
+Makefile_header.mk:    REGEXP           :=((\-DNESTED_)?CH|NA|EU|SE|CU)
